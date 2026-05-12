@@ -8,7 +8,7 @@
     } = $props();
 </script>
 
-<div class="column" style="gap: {gap}; padding: {padding}; justify-content: {justifyContent}; align-items: {alignItems}">
+<div class="column" style="gap: {gap}; --padding: {padding}; justify-content: {justifyContent}; align-items: {alignItems}">
     {@render children?.()}
 </div>
 
@@ -21,5 +21,14 @@
         flex-direction: column;
         box-sizing: border-box;
         z-index: 1;
+        padding: var(--padding);
+    }
+
+    @media (max-width: 850px) 
+    {
+        .column
+        {
+            padding: calc(var(--padding) / 2);
+        }
     }
 </style>

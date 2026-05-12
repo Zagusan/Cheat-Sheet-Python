@@ -199,8 +199,8 @@
 		.lucide,
 		.simple-icons
 		{
-			font-size: 2.75em;
-			height: 3.5rem;
+			font-size: 2.5em;
+			height: 3rem;
 		}
 
 		:global(.svelte-logo svg)
