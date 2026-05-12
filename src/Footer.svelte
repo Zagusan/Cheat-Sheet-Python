@@ -19,6 +19,7 @@
 
 	let iconColor = getComputedStyle(document.documentElement).getPropertyValue("--icon-color");
 	let lightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
+	let linkIconSize = window.matchMedia("(max-width: 850px)").matches ? 24 : 50;
 </script>
 
 <div class="footer">
@@ -40,7 +41,7 @@
 					</div>
 					<a href="https://lucide.dev/license" target="_blank" rel="noopener noreferrer">
 						Ver licencia
-						<Link size={50}/>
+						<Link size={linkIconSize}/>
 					</a>
 				</Column>
 			</Card>
@@ -51,7 +52,7 @@
 					</div>
 					<a href="https://github.com/sveltejs/svelte/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">
 						Ver licencia
-						<Link size={50}/>
+						<Link size={linkIconSize}/>
 					</a>
 				</Column>
 			</Card>
@@ -63,7 +64,7 @@
 					</div>
 					<a href="https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md" target="_blank" rel="noopener noreferrer">
 						Ver licencia
-						<Link size={50}/>
+						<Link size={linkIconSize}/>
 					</a>
 				</Column>
 			</Card>
@@ -185,6 +186,26 @@
 		a:hover
 		{
 			color: #00c900;
+		}
+	}
+
+	@media (max-width: 850px) 
+	{
+		a
+		{
+			font-size: 21px;
+		}
+
+		.lucide,
+		.simple-icons
+		{
+			font-size: 2.75em;
+			height: 3.5rem;
+		}
+
+		:global(.svelte-logo svg)
+		{
+			width: 275px;
 		}
 	}
 </style>

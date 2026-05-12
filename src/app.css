@@ -31,12 +31,14 @@
 body
 {
 	margin: 0;
+	overflow: auto;
 }
 
 #app
 {
-	overflow-x: auto;
 	box-sizing: border-box;
+	min-width: 100%;
+	width: min-content;
 }
 
 h1
@@ -71,18 +73,13 @@ h2
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding: 50px 0;
 	gap: 50px;
 }
 
-@media (min-width: 720px)
+.content >div
 {
-	.content
-	{
-		padding-left: 5%;
-		padding-right: 5%;
-	}
+	box-sizing: border-box;
 }
 
 code.hljs
@@ -91,4 +88,23 @@ code.hljs
 	font-size: 2em;
 	font-weight: 400;
 	font-family: Source Sans Pro, Helvetica, sans-serif !important;
+}
+
+@media (max-width: 850px) 
+{
+	h1
+	{
+		font-size: 2.25em;
+	}
+
+	h2
+	{
+		font-size: 1.75em;
+		margin: 10px 0;
+	}
+
+	code.hljs
+	{
+		font-size: 1.25em;
+	}
 }
