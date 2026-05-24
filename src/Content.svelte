@@ -102,7 +102,7 @@ for _ in range(10):
 		/>
 		<CodeBlock language={Python}
 			code={`import time
- 
+
 for i in range(500):
     print("La hamburguesa se está haciendo...")
     time.sleep(5)
@@ -156,6 +156,35 @@ while True:
         print("Ok ya me harté")
         print("Puedes dejar de contar")
         break`}
+		/>
+		</Column>
+	</Card>
+	<Card>
+		<Column padding="20px" justifyContent="flex-start">
+		<h2>Funciones</h2>
+		<CodeBlock language={Python}
+			code={`def saludar():
+	print("¡Hola mundo!")
+
+saludar()`}
+		/>
+		<CodeBlock language={Python}
+			code={`def funcion_secreta(numero):
+	return (2 * numero) + 1
+
+entrada = int(input())
+print(funcion_secreta(entrada))`}
+		/>
+		<CodeBlock language={Python}
+			code={`def mayor_o_menor(a, b):
+	if a > b:
+		return f"{a} es mayor a {b}"
+	elif a == b:
+		return f"{a} es igual a {b}"
+	else a < b:
+		return f"{a} es menor a {b}"
+	
+print(mayor_o_menor(2, 8))`}
 		/>
 		</Column>
 	</Card>
