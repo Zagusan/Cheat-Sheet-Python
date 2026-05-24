@@ -10,20 +10,24 @@
 	import SvelteLogo from "./lib/svelte-horizontal.svelte";
 	import SimpleIconsLogo from "./lib/simpleicons.svelte";
 
-	let isHidden = true
+	let isHidden = $state(true);
 
 	function OnClick()
 	{
 		isHidden = !isHidden
 	}
 
+	const maxWidthQuery = window.matchMedia("(max-width: 915px)");
+
 	let iconColor = getComputedStyle(document.documentElement).getPropertyValue("--icon-color");
 	let lightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
-	let linkIconSize = window.matchMedia("(max-width: 850px)").matches ? 24 : 50;
+	let linkIconSize = $state(maxWidthQuery.matches ? 24 : 50);
+
+	maxWidthQuery.addEventListener('change', () => linkIconSize = maxWidthQuery.matches ? 24 : 50);
 </script>
 
 <div class="footer">
-	<button on:click={OnClick}>
+	<button onclick={OnClick}>
 		<h1>Créditos</h1>
 		{#if isHidden}
 			<Unfold color={iconColor}/>
@@ -189,7 +193,7 @@
 		}
 	}
 
-	@media (max-width: 850px) 
+	@media (max-width: 915px) 
 	{
 		a
 		{
