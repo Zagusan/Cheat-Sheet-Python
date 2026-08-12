@@ -188,4 +188,37 @@ print(mayor_o_menor(2, 8))`}
 		/>
 		</Column>
 	</Card>
+	<Card>
+		<Column padding="20px" justifyContent="flex-start">
+			<h2>Listas</h2>
+			<CodeBlock language={Python}
+			code={`miLista = [1, "texto", 2, True]
+
+print(miLista[0]) # Imprime 1
+print(miLista[1]) # Imprime texto
+print(miLista[3]) # Imprime True
+print(miLista[-1]) # Imprime True`}
+			/>
+			<CodeBlock language={Python}
+			code={`notas = []
+cantidad = int(input("¿Cuántas notas hay?\\n"))
+
+for _ in range(cantidad):
+	nota = float(input("Escribe una nota: "))
+	notas.append(nota)
+
+notas.sort()
+print("Notas de menores a mayores:")
+print(*notas, sep="\\n")`}
+			/>
+			<CodeBlock language={Python}
+			code={`tareas = []
+tareas.append("Preparar la cena")
+tareas.append("Estudiar para ciencias")
+tareas.append("Hacer observación #6")
+
+print(*tareas, sep="\\n")`}
+			/>
+		</Column>
+	</Card>
 </div>
