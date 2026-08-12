@@ -21,9 +21,9 @@
 
 	let iconColor = getComputedStyle(document.documentElement).getPropertyValue("--icon-color");
 	let lightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
-	let linkIconSize = $state(maxWidthQuery.matches ? 24 : 50);
+	let linkIconSize = $state(maxWidthQuery.matches ? 24 : 32);
 
-	maxWidthQuery.addEventListener('change', () => linkIconSize = maxWidthQuery.matches ? 24 : 50);
+	maxWidthQuery.addEventListener('change', () => linkIconSize = maxWidthQuery.matches ? 24 : 32);
 </script>
 
 <div class="footer">
@@ -38,7 +38,7 @@
 	<div class="credits" class:hidden={isHidden}>
 		<div class="content">
 			<Card>
-				<Column padding="20px">
+				<Column padding="20px" gap="15px">
 					<div class="lucide">
 						<img style="height: 100%; margin: 0;" src={lightMode ? LucideLogoLight : LucideLogoDark} alt="Logotipo de Lucide">
 						<p>Lucide</p>
@@ -50,7 +50,7 @@
 				</Column>
 			</Card>
 			<Card>
-				<Column padding="20px">
+				<Column padding="20px" gap="15px">
 					<div class="svelte-logo">
 						<SvelteLogo/>
 					</div>
@@ -61,7 +61,7 @@
 				</Column>
 			</Card>
 			<Card>
-				<Column padding="20px">
+				<Column padding="20px" gap="15px">
 					<div class="simple-icons">
 						<SimpleIconsLogo/>
 						<p>Simple Icons</p>
@@ -84,20 +84,42 @@
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
-		background-color: transparent;
+		padding: clamp(16px, 3vw, 24px);
+		color: var(--text-color);
+		background:
+			linear-gradient(90deg, transparent, rgb(122 163 41 / 0.12), transparent),
+			var(--surface);
 		border: none;
-		border-top: 2px solid var(--border-color);
-		border-bottom: 2px solid var(--border-color);
+		border-top: 1px solid var(--card-border);
+		border-bottom: 1px solid var(--card-border);
+		box-shadow: var(--soft-shadow);
+		transition:
+			background-color 160ms ease,
+			color 160ms ease;
+	}
+
+	button h1
+	{
+		font-size: clamp(1.8rem, 3vw, 3rem);
 	}
 
 	button:hover
 	{
 		cursor: grab;
+		color: var(--accent-cyan);
+		background-color: var(--card-color-end);
 	}
 
 	button:active
 	{
 		cursor: grabbing;
+	}
+
+	button:focus-visible,
+	a:focus-visible
+	{
+		outline: 3px solid var(--accent-cyan);
+		outline-offset: 4px;
 	}
 
 	.hidden
@@ -113,9 +135,10 @@
 		justify-content: center;
 		align-items: center;
 		gap: 1.25rem;
-		height: 6rem;
+		height: 4.5rem;
 		width: 100%;
-		font-size: 3.5rem;
+		color: var(--icon-color);
+		font-size: clamp(1.7rem, 3vw, 2.35rem);
 		font-weight: 600;
 	}
 
@@ -127,30 +150,35 @@
 
 	.lucide p
 	{
-		color: #3c3c43;
+		color: var(--text-color);
 		font-family: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	}
 
 	.simple-icons p
 	{
-		color: var(--icon-color);
+		color: var(--text-color);
 		font-family: Roboto Mono,DejaVu Sans Mono,Consolas,monospace,ui-monospace,SFMono-Regular,Menlo,Monaco,Liberation Mono,Courier New !important;
 	}
 
 	:global(.simple-icons svg)
 	{
-		fill: var(--icon-color);
+		color: var(--accent-violet);
+		fill: currentColor;
 		height: 100%;
 	}
 
 	.svelte-logo
 	{
-		fill: #4a4a55;
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		color: var(--muted-text);
 	}
 
 	:global(.svelte-logo svg)
 	{
-		width: 350px;
+		width: min(280px, 100%);
 		height: auto;
 	}
 
@@ -161,55 +189,46 @@
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		font-size: 42px;
-		color: blue;
+		padding: 6px 8px;
+		border: 1px solid var(--card-border);
+		border-radius: 10px;
+		color: var(--link-color);
+		background-color: var(--surface);
+		box-shadow: var(--soft-shadow);
+		font-size: clamp(1rem, 2vw, 1.45rem);
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			border-color 160ms ease,
+			color 160ms ease,
+			transform 160ms ease;
 	}
 
 	a:hover
 	{
-		color: darkblue;
-	}
-
-	@media (prefers-color-scheme: dark)
-	{
-		.lucide p
-		{
-			color: #dfdfd6;
-		}
-
-		.svelte-logo
-		{
-			color: #b5b5aa;
-		}
-
-		a
-		{
-			color: #00ff00;
-		}
-
-		a:hover
-		{
-			color: #00c900;
-		}
+		border-color: var(--accent-pink);
+		color: var(--link-hover-color);
+		transform: translateY(-1px);
 	}
 
 	@media (max-width: 915px) 
 	{
 		a
 		{
-			font-size: 21px;
+			gap: 10px;
+			padding: 10px 12px;
 		}
 
 		.lucide,
 		.simple-icons
 		{
-			font-size: 2.5em;
+			font-size: 1.75em;
 			height: 3rem;
 		}
 
 		:global(.svelte-logo svg)
 		{
-			width: 275px;
+			width: 220px;
 		}
 	}
 </style>

@@ -21,14 +21,20 @@
         flex-direction: column;
         box-sizing: border-box;
         z-index: 1;
+        min-width: 0;
         padding: var(--padding);
+    }
+
+    .column :global(:last-child)
+    {
+        margin-bottom: 0;
     }
 
     @media (max-width: 850px) 
     {
         .column
         {
-            padding: calc(var(--padding) / 2);
+            padding: max(12px, calc(var(--padding) / 2));
         }
     }
 </style>
