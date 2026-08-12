@@ -7,9 +7,9 @@
 	--card-border: #d8dfcc;
 	--text-color: #26312f;
 	--muted-text: #626c65;
-	--accent-green: #7aa329;
-	--accent-cyan: #159aa3;
-	--accent-pink: #d64272;
+	--accent-green: #a6e22e;
+	--accent-cyan: #66d9ef;
+	--accent-pink: #f92672;
 	--accent-orange: #c66a1c;
 	--accent-violet: #8367c7;
 	--icon-color: #26312f;
@@ -32,9 +32,6 @@
 		--card-border: #4b533f;
 		--text-color: #f4f1e7;
 		--muted-text: #c8c2af;
-		--accent-green: #a6e22e;
-		--accent-cyan: #66d9ef;
-		--accent-pink: #f92672;
 		--accent-orange: #fd971f;
 		--accent-violet: #ae81ff;
 		--icon-color: #f4f1e7;
